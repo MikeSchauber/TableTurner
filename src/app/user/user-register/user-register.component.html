@@ -1,1 +1,89 @@
-<app-header></app-header>
+<main>
+  <div class="tt-register-wrapper">
+    <h2>Registrieren</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Vorname -->
+      <div class="tt-form-group">
+        <label for="firstName">Vorname</label>
+        <input id="firstName" type="text" formControlName="firstName" />
+      </div>
+
+      <!-- Nachname -->
+      <div class="tt-form-group">
+        <label for="lastName">Nachname</label>
+        <input id="lastName" type="text" formControlName="lastName" />
+      </div>
+
+      <!-- E-Mail -->
+      <div class="tt-form-group">
+        <label for="email">E-Mail</label>
+        <input id="email" type="email" formControlName="email" />
+      </div>
+
+      <!-- Handynummer -->
+      <div class="tt-form-group">
+        <label for="phone">Handynummer</label>
+        <input id="phone" type="tel" formControlName="phone" />
+      </div>
+
+      <!-- Alter -->
+      <div class="tt-form-group">
+        <label for="age">Alter</label>
+        <input id="age" type="number" formControlName="age" min="18" />
+      </div>
+
+      <!-- Bevorzugte Sprache -->
+      <div class="tt-form-group">
+        <label for="language">Bevorzugte Sprache</label>
+        <select id="language" formControlName="language">
+          <option value="de">Deutsch</option>
+          <option value="en">Englisch</option>
+        </select>
+      </div>
+
+      <!-- Identität -->
+      <div class="tt-form-group">
+        <label for="identity">Ich bin</label>
+        <select id="identity" formControlName="identity">
+          <option value="female">Frau</option>
+          <option value="male">Mann</option>
+          <option value="diverse">Divers</option>
+        </select>
+      </div>
+
+      <!-- Gesuch -->
+      <div class="tt-form-group">
+        <label for="lookingFor">Ich suche</label>
+        <select id="lookingFor" formControlName="lookingFor">
+          <option value="female">Frau</option>
+          <option value="male">Mann</option>
+          <option value="diverse">Divers</option>
+        </select>
+      </div>
+
+      <!-- Passwort -->
+      <div class="tt-form-group">
+        <label for="password">Passwort</label>
+        <input id="password" type="password" formControlName="password" autocomplete="new-password" />
+      </div>
+
+      <!-- Passwort bestätigen -->
+      <div class="tt-form-group">
+        <label for="confirmPassword">Passwort bestätigen</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" autocomplete="new-password" />
+      </div>
+
+      <!-- Einverständnis Kontaktfreigabe -->
+      <div class="tt-form-group tt-checkbox">
+        <input id="consentContactSharing" type="checkbox" formControlName="consentContactSharing" required />
+        <label for="consentContactSharing">Ich bin einverstanden, dass meine Kontaktinformationen bei einem Match weitergegeben werden</label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="tt-btn" [disabled]="registerForm.invalid">
+        Registrieren
+      </button>
+    </form>
+  </div>
+</main>

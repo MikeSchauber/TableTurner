@@ -1,0 +1,47 @@
+.tt-header, .tt-footer {
+  background-color: #1e1e2f;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+  .tt-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .tt-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .tt-nav a, .tt-links a {
+    color: #ccc;
+    margin-left: 1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.tt-footer {
+  margin-top: auto;
+  font-size: 0.9rem;
+
+  .tt-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}

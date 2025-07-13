@@ -1,1 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. Box sizing – wichtig für Layout-Logik */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin + padding */
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd,
+ul, ol,
+input, textarea, button {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 4. Remove anchor styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 5. Set core body styles */
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: #f9f9fb;
+  color: #222;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Media elements: remove border + max width */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 7. Form elements: inherit font + reset styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+}
+
+/* 8. Button: cursor + basic reset */
+button {
+  cursor: pointer;
+}
+
+/* 9. Root font size (optional, für rem) */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* 10. Table reset */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* 11. Strong & em */
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+
+a {
+    cursor: pointer;
+}

@@ -1,0 +1,20 @@
+// Primärfarben
+$primary-light: #fee5fb;
+$primary: #fda0ff;
+$primary-dark: #c36fcc;
+
+$secondary-light: #fbd0ad;
+$secondary: #ff9da2;
+$secondary-dark: #f8afb6;
+
+$text-primary: #1a1a1a;
+$text-secondary: #5a5a5a;
+$error-color: #e74c3c;
+
+@mixin dFlex($jc: center, $ai: center, $fd: column, $g: 0px) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+  gap: $g;
+}

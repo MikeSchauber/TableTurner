@@ -1,24 +1,31 @@
+@import "../../../mixins.scss";
+
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 4rem 1rem;
+  color: $primary-dark !important;
+  background-color: $primary-light;
+  font-weight: bold;
 }
 
 .tt-register-wrapper {
   max-width: 480px;
   width: 100%;
   padding: 2rem;
-  background-color: #1e1e2f;
+  background-color: $primary-light;
   border-radius: 12px;
-  box-shadow: 0 0px 16px rgb(103 103 103 / 30%);
-  color: #fff;
+  border: 2px solid $secondary-dark;
+  box-shadow: 0px 0px 4px rgb(205, 205, 205);
+  color: $text-primary;
 
   h2 {
     text-align: center;
     margin-bottom: 1.5rem;
     font-weight: 600;
     font-size: 1.8rem;
+    color: $secondary;
   }
 
   form {
@@ -34,32 +41,33 @@ main {
     label {
       margin-bottom: 0.3rem;
       font-size: 0.95rem;
+      color: $text-secondary;
     }
 
     input,
     select {
       padding: 0.6rem 0.8rem;
-      border: 1px solid #444;
+      border: 1px solid $secondary;
       border-radius: 8px;
-      background-color: #2c2c3e;
-      color: #fff;
       font-size: 1rem;
+      background-color: white;
+      color: $text-primary;
 
       &:focus {
         outline: none;
-        border-color: #6c5ce7;
-        box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+        border-color: $secondary;
+        box-shadow: 0 0 4px 0px $secondary;
       }
     }
   }
 
   .tt-error input,
   .tt-error select {
-    border-color: #e74c3c;
+    border-color: $error-color;
   }
 
   .tt-error-message {
-    color: #e74c3c;
+    color: $error-color;
     font-size: 0.85rem;
     margin-top: 0.25rem;
   }
@@ -67,17 +75,17 @@ main {
   .tt-btn {
     margin-top: 1rem;
     padding: 0.7rem;
-    background-color: #6c5ce7;
+    background-color: $secondary;
     border: none;
     border-radius: 8px;
-    color: #fff;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-      background-color: #5a4bd6;
+      background-color: $secondary-dark;
     }
 
     &:disabled {
@@ -87,6 +95,7 @@ main {
   }
 
   .tt-checkbox {
+    padding-left: 8px;
     div {
       display: flex;
       flex-direction: row;
@@ -94,13 +103,19 @@ main {
       gap: 16px;
 
       input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
+        width: 33px;
+        height: 33px;
+        &:focus {
+          outline: none;
+          border-color: none;
+          box-shadow: none;
+        }
       }
 
       label {
         margin: 0 !important;
         font-size: 0.95rem;
+        color: $text-secondary;
       }
     }
   }

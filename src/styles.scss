@@ -1,4 +1,4 @@
-$mainBackground: #1e1e2f;
+@import "./mixins.scss";
 
 /* 1. Box sizing – wichtig für Layout-Logik */
 *,
@@ -45,7 +45,7 @@ a {
 body {
   font-family: "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
-  background-color: #1e1e2f;
+  background-color: $primary-light;
   color: white;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -68,9 +68,9 @@ button,
 textarea,
 select {
   font: inherit;
-  background: #1e1e2f;
-  border: 1px solid #444;
-  background-color: #2c2c3e;
+  background: $primary-light;
+  border: 1px solid #f6a0ff;
+  background-color: $primary-light;
   border-radius: 4px;
   padding: 0.6rem 0.8rem;
   outline: none;

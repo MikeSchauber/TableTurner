@@ -92,7 +92,7 @@ export class UserRegisterComponent {
 
   constructor(
     public fb: FormBuilder,
-    public auth: AuthService,
+    public authService: AuthService,
     public userService: UserService
   ) {
     this.registerForm = this.fb.group(
@@ -141,16 +141,13 @@ export class UserRegisterComponent {
 
   async onSubmit() {
     if (this.registerForm.valid) {
-      await this.auth.register(
+      await this.authService.register(
         this.registerForm.value.email,
         this.registerForm.value.password
       );
-      setTimeout(() => {
-        console.log(this.auth.registerSuccess);
-      }, 1);
 
-      if (this.auth.registerSuccess) {
-        await this.userService.registerUserInStorage(this.registerForm.value);
+      if (this.authService.registerSuccess) {
+        await this.authService.registerUserInStorage(this.registerForm.value);
       }
     } else {
       this.registerForm.markAllAsTouched();

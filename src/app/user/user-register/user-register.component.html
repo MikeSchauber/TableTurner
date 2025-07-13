@@ -8,8 +8,7 @@
             <div class="tt-form-group" [ngClass]="{ 'tt-error': isInvalid(field.name) }">
                 <label [for]="field.name">{{ field.label }}</label>
                 @if (field.type !== 'select') {
-                <input [id]="field.name" [type]="field.type" [formControlName]="field.name"
-                    [autocomplete]="field.autocomplete || 'off'" />
+                <input [id]="field.name" [type]="field.type" [formControlName]="field.name" autocomplete="on" />
                 }
                 @if( field.type === 'select') {
                 <select [id]="field.name" [formControlName]="field.name">
@@ -19,9 +18,12 @@
                 </select>
                 }
 
-                <small class="tt-error-message" *ngIf="isInvalid(field.name)">
+                @if (isInvalid(field.name)) {
+                <small class="tt-error-message">
                     {{ field.error }}
                 </small>
+                }
+
             </div>
             }
 
@@ -33,9 +35,12 @@
                         Ich bin einverstanden, dass meine Kontaktinformationen bei einem Match weitergegeben werden
                     </label>
                 </div>
-                <small class="tt-error-message" *ngIf="isInvalid('consentContactSharing')">
+                @if (isInvalid('consentContactSharing')) {
+                <small class="tt-error-message" >
                     Diese Zustimmung ist erforderlich.
                 </small>
+                }
+
             </div>
 
             <!-- Passwort-Abgleich -->

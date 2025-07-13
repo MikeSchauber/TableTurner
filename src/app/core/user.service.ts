@@ -6,11 +6,7 @@ import { RegisterUser } from '../interfaces/register-user';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private db: Firestore) {}
+  constructor() {}
 
-  async registerUserInStorage(registerForm: RegisterUser) {
-    const { consentContactSharing, confirmPassword, ...userData } =
-      registerForm;
-    await addDoc(collection(this.db, 'user'), userData);
-  }
+
 }

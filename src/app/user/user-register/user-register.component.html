@@ -1,89 +1,54 @@
 <main>
-  <div class="tt-register-wrapper">
-    <h2>Registrieren</h2>
+    <div class="tt-register-wrapper">
+        <h2>Anmeldung</h2>
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <!-- Vorname -->
-      <div class="tt-form-group">
-        <label for="firstName">Vorname</label>
-        <input id="firstName" type="text" formControlName="firstName" />
-      </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Felder -->
+            @for (field of formFields; track $index) {
+            <div class="tt-form-group" [ngClass]="{ 'tt-error': isInvalid(field.name) }">
+                <label [for]="field.name">{{ field.label }}</label>
+                @if (field.type !== 'select') {
+                <input [id]="field.name" [type]="field.type" [formControlName]="field.name"
+                    [autocomplete]="field.autocomplete || 'off'" />
+                }
+                @if( field.type === 'select') {
+                <select [id]="field.name" [formControlName]="field.name">
+                    @for (opt of field.options; track $index) {
+                    <option [value]="opt.value">{{ opt.label }}</option>
+                    }
+                </select>
+                }
 
-      <!-- Nachname -->
-      <div class="tt-form-group">
-        <label for="lastName">Nachname</label>
-        <input id="lastName" type="text" formControlName="lastName" />
-      </div>
+                <small class="tt-error-message" *ngIf="isInvalid(field.name)">
+                    {{ field.error }}
+                </small>
+            </div>
+            }
 
-      <!-- E-Mail -->
-      <div class="tt-form-group">
-        <label for="email">E-Mail</label>
-        <input id="email" type="email" formControlName="email" />
-      </div>
+            <!-- Einverständnis Kontaktfreigabe -->
+            <div class="tt-form-group tt-checkbox" [ngClass]="{ 'tt-error': isInvalid('consentContactSharing') }">
+                <div>
+                    <input id="consentContactSharing" type="checkbox" formControlName="consentContactSharing" />
+                    <label for="consentContactSharing">
+                        Ich bin einverstanden, dass meine Kontaktinformationen bei einem Match weitergegeben werden
+                    </label>
+                </div>
+                <small class="tt-error-message" *ngIf="isInvalid('consentContactSharing')">
+                    Diese Zustimmung ist erforderlich.
+                </small>
+            </div>
 
-      <!-- Handynummer -->
-      <div class="tt-form-group">
-        <label for="phone">Handynummer</label>
-        <input id="phone" type="tel" formControlName="phone" />
-      </div>
+            <!-- Passwort-Abgleich -->
+            @if (registerForm.hasError('notMatching')) {
+            <div class="tt-form-group tt-error">
+                <small class="tt-error-message">Die Passwörter stimmen nicht überein.</small>
+            </div>
+            }
 
-      <!-- Alter -->
-      <div class="tt-form-group">
-        <label for="age">Alter</label>
-        <input id="age" type="number" formControlName="age" min="18" />
-      </div>
-
-      <!-- Bevorzugte Sprache -->
-      <div class="tt-form-group">
-        <label for="language">Bevorzugte Sprache</label>
-        <select id="language" formControlName="language">
-          <option value="de">Deutsch</option>
-          <option value="en">Englisch</option>
-        </select>
-      </div>
-
-      <!-- Identität -->
-      <div class="tt-form-group">
-        <label for="identity">Ich bin</label>
-        <select id="identity" formControlName="identity">
-          <option value="female">Frau</option>
-          <option value="male">Mann</option>
-          <option value="diverse">Divers</option>
-        </select>
-      </div>
-
-      <!-- Gesuch -->
-      <div class="tt-form-group">
-        <label for="lookingFor">Ich suche</label>
-        <select id="lookingFor" formControlName="lookingFor">
-          <option value="female">Frau</option>
-          <option value="male">Mann</option>
-          <option value="diverse">Divers</option>
-        </select>
-      </div>
-
-      <!-- Passwort -->
-      <div class="tt-form-group">
-        <label for="password">Passwort</label>
-        <input id="password" type="password" formControlName="password" autocomplete="new-password" />
-      </div>
-
-      <!-- Passwort bestätigen -->
-      <div class="tt-form-group">
-        <label for="confirmPassword">Passwort bestätigen</label>
-        <input id="confirmPassword" type="password" formControlName="confirmPassword" autocomplete="new-password" />
-      </div>
-
-      <!-- Einverständnis Kontaktfreigabe -->
-      <div class="tt-form-group tt-checkbox">
-        <input id="consentContactSharing" type="checkbox" formControlName="consentContactSharing" required />
-        <label for="consentContactSharing">Ich bin einverstanden, dass meine Kontaktinformationen bei einem Match weitergegeben werden</label>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="tt-btn" [disabled]="registerForm.invalid">
-        Registrieren
-      </button>
-    </form>
-  </div>
+            <!-- Submit Button -->
+            <button type="submit" class="tt-btn" [disabled]="registerForm.invalid">
+                Registrieren
+            </button>
+        </form>
+    </div>
 </main>
